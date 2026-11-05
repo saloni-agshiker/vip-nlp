@@ -49,6 +49,8 @@ def get_edstem_threads(req: func.HttpRequest) -> func.HttpResponse:
         headers={
             "Authorization": f"Bearer {token}",
             "Accept": "application/json",
+            # EdStem's Cloudflare rules block urllib's default Python user agent.
+            "User-Agent": "curl/8.6.0",
         },
         method="GET",
     )
